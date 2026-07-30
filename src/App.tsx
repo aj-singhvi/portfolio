@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import InstrumentBar from './components/InstrumentBar'
 import Hero from './components/Hero'
 import Modules from './components/Modules'
@@ -23,6 +24,7 @@ export default function App() {
           <Terminal />
         </div>
       </main>
+      <Analytics />
     </>
   )
 }
