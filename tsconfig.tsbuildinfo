@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/data.ts","./src/main.tsx","./src/components/hero.tsx","./src/components/instrumentbar.tsx","./src/components/modules.tsx","./src/components/primitives.tsx","./src/components/shaderfield.tsx","./src/components/spec.tsx","./src/components/terminal.tsx","./vite.config.ts"],"version":"5.7.3"}

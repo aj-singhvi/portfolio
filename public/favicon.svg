@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#141210"/>
+  <!-- Corner ticks, the same instrument-panel brackets used across the page. -->
+  <path d="M5 15V5h10M59 49v10H49" fill="none" stroke="#e2431c" stroke-width="3"/>
+  <text x="32" y="43"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="30" font-weight="400" letter-spacing="-1"
+        text-anchor="middle" fill="#f4f1ea">A<tspan fill="#e2431c" font-style="italic">J</tspan></text>
+</svg>
