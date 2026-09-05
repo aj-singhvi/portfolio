@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { modules, profile, spec } from '../data'
+import { trackEvent } from '../analytics'
 import { Magnetic, Reveal, SectionHeading } from './Primitives'
 
 type Line = { kind: 'in' | 'out' | 'accent'; text: string }
@@ -90,6 +91,8 @@ export default function Terminal() {
 
   /** One path for both routes in: typing and tapping a suggestion chip. */
   const execute = (entry: string) => {
+    const command = entry.trim().toLowerCase()
+    if (command) trackEvent('terminal_command', { command })
     if (entry.trim().toLowerCase() === 'clear') {
       setLines([])
     } else {
@@ -241,6 +244,10 @@ export default function Terminal() {
                 <Magnetic className="h-full">
                   <a
                     href={`mailto:${profile.email}`}
+                    onClick={() => {
+                      trackEvent('email_click', { location: 'contact_panel' })
+                      trackEvent('generate_lead', { method: 'email' })
+                    }}
                     className="group flex h-full items-center justify-center gap-2 bg-ink px-4 py-5 text-sm text-paper transition-colors hover:bg-flame"
                   >
                     Email me
@@ -252,6 +259,7 @@ export default function Terminal() {
                     href={profile.resume}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => trackEvent('resume_click', { location: 'contact_panel' })}
                     className="group flex h-full items-center justify-center gap-2 bg-card px-4 py-5 text-sm transition-colors hover:text-flame"
                   >
                     Résumé
@@ -277,6 +285,7 @@ export default function Terminal() {
                     href={s.url}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => trackEvent('social_click', { network: s.label })}
                     className="group flex items-baseline justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-ink sm:px-6"
                   >
                     <span className="label t-muted transition-colors group-hover:text-paper/60">{s.label}</span>

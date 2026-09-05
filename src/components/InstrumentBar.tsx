@@ -1,6 +1,7 @@
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { profile, sections } from '../data'
+import { trackEvent } from '../analytics'
 
 export default function InstrumentBar() {
   const [zone, setZone] = useState<'paper' | 'ink'>('paper')
@@ -54,6 +55,7 @@ export default function InstrumentBar() {
             <a
               key={s.id}
               href={`#${s.id}`}
+              onClick={() => trackEvent('navigation_click', { section: s.id })}
               className={`group flex flex-1 items-center gap-2 border-r px-4 transition-colors hover:bg-flame hover:text-paper ${edge}`}
             >
               <span className="label text-flame transition-colors group-hover:text-paper">{s.num}</span>
@@ -67,6 +69,7 @@ export default function InstrumentBar() {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent('resume_click', { location: 'desktop_header' })}
             className="label hidden text-flame hover:underline sm:inline"
           >
             Résumé ↗
@@ -99,7 +102,10 @@ export default function InstrumentBar() {
             <a
               key={s.id}
               href={`#${s.id}`}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackEvent('navigation_click', { section: s.id })
+                setOpen(false)
+              }}
               className={`flex items-center gap-4 border-b px-6 py-4 ${edge}`}
             >
               <span className="label text-flame">{s.num}</span>
@@ -110,6 +116,7 @@ export default function InstrumentBar() {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent('resume_click', { location: 'mobile_menu' })}
             className="flex items-center gap-4 px-6 py-4 text-flame"
           >
             <span className="label">↗</span>

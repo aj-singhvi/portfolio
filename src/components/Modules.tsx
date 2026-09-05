@@ -1,6 +1,7 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import { useState } from 'react'
 import { modules } from '../data'
+import { trackEvent } from '../analytics'
 import { LineReveal, Reveal, SectionHeading } from './Primitives'
 
 type Module = (typeof modules)[number]
@@ -121,6 +122,13 @@ function ModuleCard({ mod, flip }: { mod: Module; flip: boolean }) {
               href={mod.link}
               target="_blank"
               rel="noreferrer"
+              onClick={() =>
+                trackEvent('project_source_click', {
+                  project_id: mod.id,
+                  project_name: mod.title,
+                  destination: mod.link,
+                })
+              }
               className="label mt-6 inline-block self-start border-b border-flame pb-1 text-flame"
             >
               View source ↗
