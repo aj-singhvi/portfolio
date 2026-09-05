@@ -8,6 +8,7 @@ declare global {
 
 export function trackEvent(name: string, params?: EventParams) {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', name, params)
+    const debug = new URLSearchParams(window.location.search).get('ga_debug') === '1'
+    window.gtag('event', name, debug ? { ...params, debug_mode: true } : params)
   }
 }

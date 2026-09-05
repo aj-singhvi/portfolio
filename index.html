@@ -34,7 +34,8 @@
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'G-8BGRTRZ3V1');
+      const gaDebug = new URLSearchParams(window.location.search).get('ga_debug') === '1';
+      gtag('config', 'G-8BGRTRZ3V1', gaDebug ? { debug_mode: true } : undefined);
     </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
