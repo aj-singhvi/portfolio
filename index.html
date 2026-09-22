@@ -11,21 +11,6 @@
     <meta name="author" content="Arihant Jain" />
     <meta name="theme-color" content="#f4f1ea" />
 
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-WJLXBSMS');
-    </script>
-    <!-- End Google Tag Manager -->
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BGRTRZ3V1"></script>
     <script>
@@ -34,8 +19,7 @@
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      const gaDebug = new URLSearchParams(window.location.search).get('ga_debug') === '1';
-      gtag('config', 'G-8BGRTRZ3V1', gaDebug ? { debug_mode: true } : undefined);
+      gtag('config', 'G-8BGRTRZ3V1', { send_page_view: true });
     </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -57,16 +41,6 @@
     />
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WJLXBSMS"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
